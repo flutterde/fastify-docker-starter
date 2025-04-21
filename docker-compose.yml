@@ -1,0 +1,22 @@
+services:
+  app:
+    image: app:latest
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - mynet
+    container_name: my_app
+    volumes:
+      - myvol01:/app
+
+networks:
+  mynet:
+    driver: bridge
+
+volumes:
+  myvol01:
+    driver_opts:
+      type: none
+      device: /Users/ochouati/Desktop/node
+      o: bind
